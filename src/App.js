@@ -8,7 +8,7 @@ function App() {
     
   }
   return (
-    <div className="grid grid-cols-16 grid-rows-16 font-Quicksand bg-emerald-100 h-screen">
+    <div className="grid grid-cols-12 grid-rows-12 font-Quicksand bg-emerald-100 h-screen">
       <Logo />
       <Sidebar />
       <Content />

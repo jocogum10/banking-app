@@ -1,7 +1,7 @@
 
 function Content () {
     return (
-        <h1 className="col-span-14 row-span-14">
+        <h1 className="bg-emerald-600 col-span-11 row-start-2 row-span-full">
             Main Content
         </h1>
     )

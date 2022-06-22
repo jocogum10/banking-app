@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        '16': 'repeat(16, minmax(0, 1fr))'
+        '12': 'repeat(12, 1fr)'
+      },
+      gridTemplateRows: {
+        '12': 'repeat(12, 1fr)'
       },
       fontFamily: {
         Quicksand: ["Quicksand", "sans-serif"],

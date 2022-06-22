@@ -1,6 +1,6 @@
 function Logo () {
     return (
-        <div className="col-span-16 row-span-1">
+        <div className="bg-emerald-300 col-span-full row-star-1">
             <h1>Banking App</h1>
         </div>
         
