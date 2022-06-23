@@ -3,16 +3,15 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 
 function App() {
-  const account = {
+  const user = {
     name : 'Carlos Joco Gumanay',
-    account_type : 'Savings',
-    amount : '10000'
+    account: [{account_type : 'Savings', amount : '10000'}],
   }
   return (
     <div className="grid grid-cols-12 grid-rows-12 font-Quicksand bg-emerald-100 h-screen">
-      <Navbar name={account.name} />
+      <Navbar name={user.name} />
       <Sidebar />
-      <Content account_type={account.account_type} amount={account.amount} />
+      <Content account={user.account} />
     </div>
   );
 }
