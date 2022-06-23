@@ -1,9 +1,9 @@
 function Card ({amount, account_type, account_nunber}) {
     return (
-        <div className="bg-emerald-300 max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="bg-emerald-300 max-w-sm rounded overflow-hidden shadow-lg m-3">
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{account_type}</div>
-                <p className="text-gray-700 text-base">
+                    <p className="text-gray-700 text-base">
                         {account_nunber}
                     </p>
                     <p className="text-gray-700 text-base">
