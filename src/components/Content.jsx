@@ -1,9 +1,12 @@
 
-function Content () {
+import Card from "./Card";
+
+
+function Content ({account_type, amount}) {
     return (
-        <h1 className="bg-emerald-600 col-span-11 row-start-2 row-span-full">
-            Main Content
-        </h1>
+        <div className="bg-emerald-100 col-span-11 row-start-2 row-span-full">
+            <Card amount={amount} account_type={account_type} />
+        </div>
     )
 }
 
