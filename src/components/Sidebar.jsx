@@ -1,25 +1,23 @@
-import {HandIcon, HomeIcon} from '@heroicons/react/solid'
+import {HomeIcon, ShoppingBagIcon, SwitchHorizontalIcon, DocumentTextIcon, ChartBarIcon, UserIcon, ShieldCheckIcon, ViewListIcon} from '@heroicons/react/solid'
 
 function Sidebar () {
-    const sideBarText = [
-        'Home',
-        'My Account',
-        'Transfer Money',
-        'Payments / Load',
-        'Investments',
-        'Account Maintenance',
-        'Health and Life Protection',
-        'Other Services'
+    // links
+    const sideBarInfo = [
+        {icon: <HomeIcon className='h-5 w-5' />, text: 'Home', route: '/'},
+        {icon: <ShoppingBagIcon className='h-5 w-5' />, text: 'My Account', route: '/my-account'},
+        {icon: <SwitchHorizontalIcon className='h-5 w-5' />, text: 'Transfer Money', route: '/transfer-money'},
+        {icon: <DocumentTextIcon className='h-5 w-5' />, text: 'Payments / Load', route: '/pay-bills'},
+        {icon: <ChartBarIcon className='h-5 w-5' />, text: 'Investments', route: '/investments'},
+        {icon: <UserIcon className='h-5 w-5' />, text: 'Account Maintenance', route: '/account-maintenance'},
+        {icon: <ShieldCheckIcon className='h-5 w-5' />, text: 'Health and Life Protection', route: '/life--health-protection'},
+        {icon: <ViewListIcon className='h-5 w-5' />, text: 'Other Services', route: '/other-services'}
     ]
-    const icons = [
-        
-    ]
-    const sideBarLinks = sideBarText.map((text) => {
+    const sideBarLinks = sideBarInfo.map((text) => {
         return (
-            <div className="p-2 m-1 bg-emerald-300 rounded shadow-lg hover:bg-emerald-700 hover:text-white flex justify-start items-start">
-                <HomeIcon className='h-5 w-5'/>
-                <p>{text}</p>
-            </div>
+            <a href={text.route} key={text.text} className="p-2 m-1 bg-emerald-300 rounded shadow-lg hover:bg-emerald-700 hover:text-white flex justify-start items-center">
+                {text.icon}
+                <p className='m-1'>{text.text}</p>
+            </a>
             
         )
     })

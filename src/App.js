@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 
 function App() {
+  // variables
   const user = {
     name : 'Carlos Joco Gumanay',
     accounts: [
@@ -17,11 +18,13 @@ function App() {
     password: 'test123',
     email: 'test@test.com'
   }
+
+  // return
   return (
     <div className="grid grid-cols-12 grid-rows-12 font-Quicksand min-h-screen">
       <Navbar name={user.name} />
       <Sidebar />
-      <Content accounts={user.accounts} />
+      <Content accounts={user.accounts} name={user.name} />
     </div>
   );
 }
