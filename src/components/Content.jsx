@@ -2,15 +2,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Account from "../pages/Account";
 import ComingSoon from "../pages/ComingSoon";
 import Home from "../pages/Home";
+import TransferMoney from "../pages/TransferMoney";
 
 
 function Content ({name, accounts}) {
-    
+
     const homePage = <Home name={name} />
     const accountPage = accounts.map((account) => {
         return <Account key={account.account_number} amount={account.amount} account_type={account.account_type} account_number={account.account_number}/>
     });
-    const comingSoon = <ComingSoon className="text-bold flex justify-center items-center" />
+    const transferPage = <TransferMoney accounts={accounts}/>
+    const comingSoon = <ComingSoon/>
 
     return (
         <BrowserRouter>
@@ -18,7 +20,7 @@ function Content ({name, accounts}) {
                 <Routes>
                     <Route path='/' element={homePage}/>
                     <Route path='/my-account' element={accountPage}/>
-                    <Route path='/transfer-money' element={comingSoon}/>
+                    <Route path='/transfer-money' element={transferPage}/>
                     <Route path='/pay-bills' element={comingSoon}/>
                     <Route path='/investments' element={comingSoon}/>
                     <Route path='/account-maintenance' element={comingSoon}/>
