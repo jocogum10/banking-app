@@ -1,19 +1,19 @@
 import { Fragment, useState } from "react";
 
-function TransferMoney (props) {
-    // 1 destructure needed props, any logic about props
-    const {accounts} = props
-    // 2 setup states
+function SendMoney (props) {
+    const {balance, account_type, account_number} = props
+
+    const accountBalance = balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
     const [transferDestination, setTransferDestination] = useState('');
-    // 3 hook dependencies
-    // 4 declaration of event handlers
+
     const chooseTransfer = (e) => {
         {switch (e.target.value) {
             case 'own_account':
                 setTransferDestination(<Fragment>
                                     <label htmlFor="account-number-destination">Which account would you like to transfer to:</label>
                                     <select name="account-number-destination" className="p-1 my-1 h-10 rounded text-emerald-900">
-                                        {accountNumber}
+                                        Unable to process your request at the moment.
                                     </select>
                                 </Fragment>)
                 break;
@@ -31,20 +31,19 @@ function TransferMoney (props) {
                 setTransferDestination('')
         };}
     }
-    const accountNumber = accounts.map( (account) => {
-        return <option className="text-emerald-900" key={account.account_number}>{account.account_number}</option>
-    });
-    // 5 control flow of jsx returns
-    
 
     return (
         <div className="container bg-emerald-300 rounded overflow-hidden m-10 p-10 flex flex-col">
-            <h1 className="font-bold text-xl">Fill in the details</h1>
+            <h1 className="font-bold text-xl">Send Money</h1>
             <hr className="border-black" />
-            <label htmlFor="account-number">Which account would you like to transfer from:</label>
+            <label htmlFor="account-number">Which account would you like to send from:</label>
             <select name="account-number" className="p-1 my-1 h-10 rounded text-emerald-900">
-                {accountNumber}
+                <option className="text-emerald-900">{account_number}</option>
             </select>
+            <span className="flex justify-between font-bold text-xl my-5">
+                <p>Available Balance:</p> 
+                <p>Php {accountBalance}</p>
+            </span>
             <label htmlFor="amountTransfer">Transfer amount</label>
             <input name="amountTransfer" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-emerald-900 text-right" placeholder="0.00"/>
             <p htmlFor="amountTo">Transfer to:</p>
@@ -67,7 +66,7 @@ function TransferMoney (props) {
 
             <hr className="border-black" />
             <span className="flex justify-around">
-                <button className="bg-emerald-700 text-white hover:ring-2 hover:ring-emerald-700 my-1 rounded p-2">Submit</button>
+                <button className="bg-emerald-700 text-white hover:ring-2 hover:ring-emerald-700 my-1 rounded p-2">Send</button>
                 <button className="bg-emerald-700 text-white hover:ring-2 hover:ring-emerald-700 my-1 rounded p-2">Cancel</button>
             </span>
             
@@ -75,4 +74,4 @@ function TransferMoney (props) {
     )
 }  
 
-export default TransferMoney;
+export default SendMoney;

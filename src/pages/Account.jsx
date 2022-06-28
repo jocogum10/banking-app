@@ -12,7 +12,8 @@ function Account (props) {
 
     const cardClicked = function(account_number) {
         console.log(account_number)
-        navigate(`/my-account/account-details/${account_number}`)
+        // navigate(`/my-account/account-details/${account_number}`)
+        navigate(`/payments`)
     }
 
 
