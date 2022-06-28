@@ -1,16 +1,17 @@
-import {HomeIcon, ShoppingBagIcon, SwitchHorizontalIcon, DocumentTextIcon, ChartBarIcon, UserIcon, ShieldCheckIcon, ViewListIcon} from '@heroicons/react/solid'
+// import {HomeIcon, ShoppingBagIcon, SwitchHorizontalIcon, DocumentTextIcon, ChartBarIcon, UserIcon, ShieldCheckIcon, ViewListIcon} from '@heroicons/react/solid'
+import {HomeIcon, ShoppingBagIcon, SwitchHorizontalIcon, DocumentTextIcon } from '@heroicons/react/solid'
 
 function Sidebar () {
     // links
     const sideBarInfo = [
         {icon: <HomeIcon className='h-5 w-5' />, text: 'Home', route: '/'},
         {icon: <ShoppingBagIcon className='h-5 w-5' />, text: 'My Account', route: '/my-account'},
-        {icon: <SwitchHorizontalIcon className='h-5 w-5' />, text: 'Transfer Money', route: '/transfer-money'},
-        {icon: <DocumentTextIcon className='h-5 w-5' />, text: 'Payments / Load', route: '/pay-bills'},
-        {icon: <ChartBarIcon className='h-5 w-5' />, text: 'Investments', route: '/investments'},
-        {icon: <UserIcon className='h-5 w-5' />, text: 'Account Maintenance', route: '/account-maintenance'},
-        {icon: <ShieldCheckIcon className='h-5 w-5' />, text: 'Health and Life Protection', route: '/life--health-protection'},
-        {icon: <ViewListIcon className='h-5 w-5' />, text: 'Other Services', route: '/other-services'}
+        {icon: <DocumentTextIcon className='h-5 w-5' />, text: 'Payments', route: '/pay-bills'},
+        {icon: <SwitchHorizontalIcon className='h-5 w-5' />, text: 'Send Money', route: '/transfer-money'},
+        // {icon: <ChartBarIcon className='h-5 w-5' />, text: 'Investments', route: '/investments'},
+        // {icon: <UserIcon className='h-5 w-5' />, text: 'Account Maintenance', route: '/account-maintenance'},
+        // {icon: <ShieldCheckIcon className='h-5 w-5' />, text: 'Health and Life Protection', route: '/life--health-protection'},
+        // {icon: <ViewListIcon className='h-5 w-5' />, text: 'Other Services', route: '/other-services'}
     ]
     const sideBarLinks = sideBarInfo.map((text) => {
         return (
