@@ -10,9 +10,7 @@ function Account (props) {
     const formattedType = account_type.toUpperCase()
 
 
-    const cardClicked = function(account_number) {
-        console.log(account_number)
-        // navigate(`/my-account/account-details/${account_number}`)
+    const cardClicked = function() {
         navigate(`/payments`)
     }
 

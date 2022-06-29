@@ -1,27 +1,44 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Payments (props) {
     // props
-    const {balance, account_type, account_number, setData} = props
+    const {data, setData} = props
+
+    // hooks
+    const [currentBalance, setCurrentBalance] = useState(data.balance)
+    const [expenseItems, setExpenseItems] = useState(data.expenseItems)
 
     const costRef = useRef(null);
     const reasonRef = useRef(null);
     const formRef = useRef();
 
-    // event handlers
-    function addPayment (e) {
-        e.preventDefault();
+    useEffect( () => {
         setData( (prevData) => {
             return {
                 ...prevData,
-                expenseItems: [{cost: costRef.current.value, reason: reasonRef.current.value}],
+                balance: currentBalance
             }
         })
-        formRef.current.reset();
+    }, [currentBalance])
+
+    // event handlers
+    function addPayment (e) {
+        e.preventDefault();
+        setCurrentBalance( (prevBalance)=>{
+            return (prevBalance-costRef.current.value)
+        })
+        setExpenseItems( (prevExpenseItems) => {
+            console.log([{cost: costRef.current.value, reason: reasonRef.current.value}])
+            return ([...prevExpenseItems, {cost: costRef.current.value, reason: reasonRef.current.value}])
+        })
+        
+        costRef.current.value = ''
+        reasonRef.current.value = ''
     }
     function clearForm (e) {
         e.preventDefault();
-        formRef.current.reset();
+        costRef.current.value = ''
+        reasonRef.current.value = ''
     }
 
 
@@ -31,11 +48,11 @@ function Payments (props) {
             <hr className="border-black" />
             <label htmlFor="account-number">Which account would you like to pay from:</label>
             <select name="account-number" className="p-1 my-1 h-10 rounded text-emerald-900">
-                <option className="text-emerald-900">{account_number}</option>
+                <option className="text-emerald-900">{data.account_number}</option>
             </select>
             <span className="flex justify-between font-bold text-xl my-5">
                 <p>Available Balance:</p> 
-                <p>Php {balance}</p>
+                <p>Php {currentBalance}</p>
             </span>
             <label htmlFor="amountToPay">Amount to Pay</label>
             <input name="amountToPay" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-emerald-900 text-right" placeholder="0.00" ref={costRef} />
