@@ -1,19 +1,19 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 function Account (props) {
-    const {balance, account_type, account_number} = props
+    const { balance, account_type, account_number } = props 
 
     const navigate = useNavigate();
 
-    const formattedAmount = (balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
+    const [formattedAmount, setFormattedAmount] = useState((balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")))
     const formattedType = account_type.toUpperCase()
 
 
     const cardClicked = function() {
         navigate(`/payments`)
     }
-
 
     return (
         <div className="bg-emerald-300 max-w-sm rounded overflow-hidden m-3 min-w-[30%] hover:drop-shadow-2xl hover:ring-2 hover:ring-emerald-700" onClick={() => cardClicked(account_number)}>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function Payments (props) {
+function Deposit (props) {
     // props
     const {data, setData} = props
 
@@ -8,8 +8,8 @@ function Payments (props) {
     const [currentBalance, setCurrentBalance] = useState(data.balance)
     const [currentExpenseItems, setCurrentExpenseItems] = useState(data.expenseItems)
 
-    const costRef = useRef(null);
-    const reasonRef = useRef(null);
+    const depositRef = useRef(null);
+    const reasonDepositRef = useRef(null);
 
     useEffect( () => {
         setData( (prevData) => {
@@ -19,8 +19,8 @@ function Payments (props) {
                 expenseItems: currentExpenseItems
             }
         })
-        costRef.current.value = ''
-        reasonRef.current.value = ''
+        depositRef.current.value = ''
+        reasonDepositRef.current.value = ''
     }, [currentBalance, currentExpenseItems])
 
 
@@ -28,20 +28,20 @@ function Payments (props) {
     function addPayment (e) {
         e.preventDefault();
         setCurrentBalance( (prevBalance)=>{
-            return (parseInt(prevBalance)-parseInt(costRef.current.value))
+            return (parseInt(prevBalance)+parseInt(depositRef.current.value))
         })
         setCurrentExpenseItems( (prevExpenseItems) => {
-            const prevExpense = [...prevExpenseItems]
-            prevExpense.push({transaction: '-'+costRef.current.value, reason: reasonRef.current.value})
-            return (prevExpense)
+            const prevBalance = [...prevExpenseItems]
+            prevBalance.push({transaction: '+'+depositRef.current.value, reason: reasonDepositRef.current.value})
+            return (prevBalance)
         })
         
         
     }
     function clearForm (e) {
         e.preventDefault();
-        costRef.current.value = ''
-        reasonRef.current.value = ''
+        depositRef.current.value = ''
+        reasonDepositRef.current.value = ''
     }
 
     // for rendering
@@ -50,7 +50,7 @@ function Payments (props) {
 
     return (
         <form className="container bg-emerald-300 rounded overflow-hidden m-10 p-10 flex flex-col">
-            <h1 className="font-bold text-xl">Payments</h1>
+            <h1 className="font-bold text-xl">Deposit</h1>
             <hr className="border-black" />
             <label htmlFor="account-number">Which account would you like to pay from:</label>
             <select name="account-number" className="p-1 my-1 h-10 rounded text-emerald-900">
@@ -60,10 +60,10 @@ function Payments (props) {
                 <p>Available Balance:</p> 
                 <p>Php {formattedAmount}</p>
             </span>
-            <label htmlFor="amountToPay">Amount to Pay</label>
-            <input name="amountToPay" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-emerald-900 text-right" placeholder="-(Php 0.00)" ref={costRef} />
-            <label htmlFor="reasonOfPayment">Reason of Payment</label>
-            <input name="reasonOfPayment" type="text" className="appearance-none p-2 my-1 h-10 rounded placeholder-emerald-900 text-right" placeholder="Reason" ref={reasonRef} />
+            <label htmlFor="amountToPay">Amount to Deposit</label>
+            <input name="amountToPay" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-emerald-900 text-right" placeholder="+Php 0.00" ref={depositRef} />
+            <label htmlFor="reasonOfPayment">Reason of Deposit</label>
+            <input name="reasonOfPayment" type="text" className="appearance-none p-2 my-1 h-10 rounded placeholder-emerald-900 text-right" placeholder="Reason" ref={reasonDepositRef} />
             <hr className="border-black" />
             <span className="flex justify-around">
                 <button className="bg-emerald-700 text-white hover:ring-2 hover:ring-emerald-700 my-1 rounded p-2" onClick={addPayment}>Send</button>
@@ -73,4 +73,4 @@ function Payments (props) {
     )
 }
 
-export default Payments;
+export default Deposit;

@@ -3,20 +3,24 @@ import Content from './components/Content';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 
+// console.log('Setting data...')
+// localStorage.setItem('bank-app-data', JSON.stringify({
+//   username: 'Joco Gum',
+//   password: 'test123',
+//   email: 'test@example.com',
+//   balance: '100000.00',
+//   account_type: 'Savings',
+//   account_number: '1111111',
+//   expenseItems: [/*{transaction: '', reason:''}*/],
+// }));
+
 function App() {
   // variables
-  const [ data, setData ] = useState({
-    username: 'Joco Gum',
-    password: 'test123',
-    email: 'test@example.com',
-    balance: '10000.00',
-    account_type: 'Savings',
-    account_number: '1111111',
-    expenseItems: [{cost: '', reason:''},],
-  })
+  const [ data , setData ] = useState(JSON.parse(localStorage.getItem('bank-app-data')))
 
   useEffect(() => {
-    console.log('App data:', data)
+    console.log('Updating data...')
+    localStorage.setItem('bank-app-data', JSON.stringify(data))
   }, [data]);
 
 
