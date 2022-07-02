@@ -82,7 +82,7 @@ function AccountMaintenance (props) {
             </div>
 
             <div className="container shadow-md bg-red-300 rounded overflow-hidden m-10 p-10 flex flex-col">
-                <h1 className="font-bold text-xl">Account History</h1>
+                <h1 className="font-bold text-xl">Transaction History</h1>
                 <hr className="border-black my-2" />
                 <table className="table-auto">
                     <thead>
