@@ -12,7 +12,7 @@ function SendMoney (props) {
             case 'own_account':
                 setTransferDestination(<Fragment>
                                     <label htmlFor="account-number-destination">Which account would you like to transfer to:</label>
-                                    <select name="account-number-destination" className="p-1 my-1 h-10 rounded text-emerald-900">
+                                    <select name="account-number-destination" className="p-1 my-1 h-10 rounded text-red-900">
                                         Unable to process your request at the moment.
                                     </select>
                                 </Fragment>)
@@ -33,19 +33,19 @@ function SendMoney (props) {
     }
 
     return (
-        <div className="container bg-emerald-300 rounded overflow-hidden m-10 p-10 flex flex-col">
+        <div className="container shadow-md bg-red-300 rounded overflow-hidden m-10 p-10 flex flex-col">
             <h1 className="font-bold text-xl">Send Money</h1>
-            <hr className="border-black" />
+            <hr className="border-black my-2" />
             <label htmlFor="account-number">Which account would you like to send from:</label>
-            <select name="account-number" className="p-1 my-1 h-10 rounded text-emerald-900">
-                <option className="text-emerald-900">{account_number}</option>
+            <select name="account-number" className="p-1 my-1 h-10 rounded text-red-900">
+                <option className="text-red-900 text-right">{account_number}</option>
             </select>
             <span className="flex justify-between font-bold text-xl my-5">
                 <p>Available Balance:</p> 
                 <p>Php {accountBalance}</p>
             </span>
             <label htmlFor="amountTransfer">Transfer amount</label>
-            <input name="amountTransfer" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-emerald-900 text-right" placeholder="0.00"/>
+            <input name="amountTransfer" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-red-900 text-right" placeholder="0.00"/>
             <p htmlFor="amountTo">Transfer to:</p>
             <span>
                 <span>
@@ -64,10 +64,10 @@ function SendMoney (props) {
 
             {transferDestination}
 
-            <hr className="border-black" />
+            <hr className="border-black my-2" />
             <span className="flex justify-around">
-                <button className="bg-emerald-700 text-white hover:ring-2 hover:ring-emerald-700 my-1 rounded p-2">Send</button>
-                <button className="bg-emerald-700 text-white hover:ring-2 hover:ring-emerald-700 my-1 rounded p-2">Cancel</button>
+                <button className="bg-red-700 text-white hover:ring-2 hover:ring-red-700 my-1 rounded p-2">Send</button>
+                <button className="bg-red-700 text-white hover:ring-2 hover:ring-red-700 my-1 rounded p-2">Cancel</button>
             </span>
             
         </div>

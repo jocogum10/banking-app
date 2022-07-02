@@ -1,4 +1,4 @@
-import {HomeIcon, ShoppingBagIcon, SwitchHorizontalIcon, DocumentRemoveIcon, DocumentAddIcon} from '@heroicons/react/solid'
+import {HomeIcon, ShoppingBagIcon, SwitchHorizontalIcon, DocumentRemoveIcon, DocumentAddIcon, UserCircleIcon} from '@heroicons/react/solid'
 
 function Sidebar () {
     // links
@@ -8,10 +8,11 @@ function Sidebar () {
         {icon: <SwitchHorizontalIcon className='h-5 w-5' />, text: 'Send Money', route: '/send-money'},
         {icon: <DocumentRemoveIcon className='h-5 w-5' />, text: 'Payments', route: '/payments'},
         {icon: <DocumentAddIcon className='h-5 w-5' />, text: 'Deposit', route: '/deposit'},
+        {icon: <UserCircleIcon className='h-5 w-5' />, text: 'Account Maintenance', route: '/account-maintenance'},
     ]
     const sideBarLinks = sideBarInfo.map((text) => {
         return (
-            <a href={text.route} key={text.text} className="p-2 m-1 bg-emerald-300 rounded shadow-lg hover:bg-emerald-700 hover:text-white flex justify-start items-center">
+            <a href={text.route} key={text.text} className="p-2 m-2 bg-red-300 rounded hover:bg-red-700 hover:text-white flex justify-start items-center shadow-2xl z-10">
                 {text.icon}
                 <p className='m-1'>{text.text}</p>
             </a>
@@ -19,7 +20,7 @@ function Sidebar () {
     })
     
     return (
-        <div className="bg-emerald-100 col-span-2 row-start-2 row-span-full drop-shadow-md min-w-min">
+        <div className="col-span-2 row-start-2 row-span-full drop-shadow-md min-w-min">
             {sideBarLinks}
         </div>
         

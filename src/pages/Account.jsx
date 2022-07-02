@@ -12,11 +12,11 @@ function Account (props) {
 
 
     const cardClicked = function() {
-        navigate(`/payments`)
+        navigate(`/account-maintenance`)
     }
 
     return (
-        <div className="bg-emerald-300 max-w-sm rounded overflow-hidden m-3 min-w-[30%] hover:drop-shadow-2xl hover:ring-2 hover:ring-emerald-700" onClick={() => cardClicked(account_number)}>
+        <div className="border-l-red-700 border-l-8 bg-white shadow-md max-w-sm rounded overflow-hidden m-3 min-w-[30%] hover:drop-shadow-2xl hover:ring-2 hover:ring-red-700" onClick={() => cardClicked(account_number)}>
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{formattedType}</div>
                     <p className="text-xs">

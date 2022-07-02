@@ -1,7 +1,7 @@
 function Navbar (props) {
     const { username } = props
     return (
-        <div className="bg-emerald-100 text-emerald-900 col-span-full row-start-1 flex justify-between items-center drop-shadow-md z-10">
+        <div className="border-t-red-700 border-t-8 text-red-900 col-span-full row-start-1 flex justify-between items-center shadow-lg z-20">
             <h1 className="mx-3">
                 <a href="/" >Banking App</a>
             </h1>
