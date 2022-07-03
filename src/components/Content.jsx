@@ -12,7 +12,7 @@ import LogIn from "./LogIn";
 
 
 function Content (props) {
-    const {data, setData, setNotificationVisible} = props
+    const {data, setData} = props
 
     const homePage = <Home username={data.username} />
     const accountPage = <Account 
@@ -20,9 +20,9 @@ function Content (props) {
                     account_type={data.account_type} 
                     account_number={data.account_number} 
                     />
-    const sendMoneyPage = <SendMoney balance={data.balance} account_type={data.account_type} account_number={data.account_number} setNotificationVisible={setNotificationVisible}/>
-    const paymentsPage = <Payments data={data} setData={setData} setNotificationVisible={setNotificationVisible} />
-    const depositPage = <Deposit data={data} setData={setData} setNotificationVisible={setNotificationVisible} />
+    const sendMoneyPage = <SendMoney balance={data.balance} account_type={data.account_type} account_number={data.account_number} />
+    const paymentsPage = <Payments data={data} setData={setData} />
+    const depositPage = <Deposit data={data} setData={setData} />
 
     const accountMaintenancePage = <AccountMaintenance data={data} setData={setData}/>
 

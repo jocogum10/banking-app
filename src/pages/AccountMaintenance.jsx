@@ -54,7 +54,6 @@ function AccountMaintenance (props) {
     })
 
     return (
-        <Fragment>
             <div className="container shadow-md bg-red-300 rounded overflow-hidden m-10 p-10 flex flex-col">
                 <h1 className="font-bold text-xl">Account Maintenance</h1>
                 <hr className="border-black my-2" />
@@ -79,24 +78,23 @@ function AccountMaintenance (props) {
                     <button className="bg-red-700 text-white hover:ring-2 hover:ring-red-700 my-1 rounded p-2" onClick={saveAccountData}>Save</button>
                     <button className="bg-red-700 text-white hover:ring-2 hover:ring-red-700 my-1 rounded p-2" onClick={clearForm}>Cancel</button>
                 </span>
-            </div>
 
-            <div className="container shadow-md bg-red-300 rounded overflow-hidden m-10 p-10 flex flex-col">
-                <h1 className="font-bold text-xl">Transaction History</h1>
-                <hr className="border-black my-2" />
-                <table className="table-auto">
-                    <thead>
-                        <tr>
-                        <th>Reason</th>
-                        <th>Transaction</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {history}
-                    </tbody>
-                </table>
+                <div className="shadow-md bg-white rounded overflow-hidden m-10 p-10 flex flex-col">
+                    <h1 className="font-bold text-xl">Transaction History</h1>
+                    <hr className="border-black my-2" />
+                    <table className="table-auto">
+                        <thead>
+                            <tr>
+                            <th>Reason</th>
+                            <th>Transaction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {history}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </Fragment>
         
     )
 }

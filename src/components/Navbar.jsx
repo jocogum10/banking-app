@@ -1,16 +1,19 @@
-function Navbar (props) {
-    const { username, logInMode } = props
 
+function Navbar (props) {
+    const { username, logInMode, setNotLoggedIn } = props
+
+    function logOut (e) {
+        e.preventDefault()
+        setNotLoggedIn(true)
+    }
 
     if(logInMode){
         return (
-            <div className="border-t-red-700 border-t-8 text-red-900 flex justify-between items-center shadow-lg w-full p-5">
+            <div className="border-t-red-700 border-t-8 text-red-900 col-span-full row-start-1 flex justify-between items-center shadow-lg z-20">
                 <h1 className="mx-3">
                     <a href="/" >Banking App</a>
                 </h1>
-                <a>Home</a>
-                <a>Contact Us</a>
-                <a>Privacy</a>
+                
             </div>
         )
     } else {
@@ -19,7 +22,14 @@ function Navbar (props) {
                 <h1 className="mx-3">
                     <a href="/" >Banking App</a>
                 </h1>
-                <p className="mx-3">Welcome, {username}!</p>
+                <ul className="flex justify-center items-center">
+                    <li>
+                        <p className="px-5 py-2 rounded mx-3">Welcome, {username}!</p>
+                    </li>
+                    <li>
+                        <a href="/" className="px-5 py-2 hover:text-red-700 rounded cursor-pointer hover:underline" onClick={logOut}>Log Out</a>
+                    </li>
+                </ul>
             </div>
         )
     }
