@@ -12,9 +12,6 @@ function LogIn (props) {
     // get bank-app-data
     const usersData = JSON.parse(localStorage.getItem('bank-users-data'))
 
-    // if (vendors.some(e => e.Name === 'Magenic')) {
-    //     /* vendors contains the element we're looking for */
-    //   }
 
     // event handlers
     function logIn (e) {
