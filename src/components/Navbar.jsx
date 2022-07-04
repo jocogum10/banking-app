@@ -1,6 +1,6 @@
-
 function Navbar (props) {
     const { username, logInMode, setNotLoggedIn } = props
+
 
     function logOut (e) {
         e.preventDefault()
@@ -13,7 +13,6 @@ function Navbar (props) {
                 <h1 className="mx-3">
                     <a href="/" >Banking App</a>
                 </h1>
-                
             </div>
         )
     } else {

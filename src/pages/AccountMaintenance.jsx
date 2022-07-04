@@ -19,6 +19,7 @@ function AccountMaintenance (props) {
         e.preventDefault()
         console.log(clearHistoryButtonActive)
         const updatedData = {
+            id: data.id,
             username: username.current.value ? username.current.value : data.username,
             password: password.current.value ? password.current.value : data.password,
             email: email.current.value ? email.current.value : data.email,

@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import DataNotification from '../components/DataNotification'
 
-function Payments (props) {
+function Withdraw (props) {
     // props
     const {data, setData} = props
 
@@ -56,9 +56,9 @@ function Payments (props) {
     return (
         <Fragment>
             <form className="container shadow-md bg-red-300 rounded overflow-hidden m-10 p-10 flex flex-col">
-                <h1 className="font-bold text-xl">Payments</h1>
+                <h1 className="font-bold text-xl">Withdraw</h1>
                 <hr className="border-black my-2" />
-                <label htmlFor="account-number">Which account would you like to pay from:</label>
+                <label htmlFor="account-number">Which account would you like to withdraw from:</label>
                 <select name="account-number" className="p-1 my-1 h-10 rounded text-red-900">
                     <option className="text-red-900 text-right">{data.account_number}</option>
                 </select>
@@ -66,9 +66,9 @@ function Payments (props) {
                     <p>Available Balance:</p> 
                     <p>Php {formattedAmount}</p>
                 </span>
-                <label htmlFor="amountToPay">Amount to Pay</label>
+                <label htmlFor="amountToPay">Amount to Withdraw</label>
                 <input name="amountToPay" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-red-900 text-right" placeholder="-(Php 0.00)" ref={costRef} />
-                <label htmlFor="reasonOfPayment">Reason of Payment</label>
+                <label htmlFor="reasonOfPayment">Reason of Withdrawal</label>
                 <input name="reasonOfPayment" type="text" className="appearance-none p-2 my-1 h-10 rounded placeholder-red-900" placeholder="Reason" ref={reasonRef} />
                 <hr className="border-black my-2" />
                 <span className="flex justify-around">
@@ -84,4 +84,4 @@ function Payments (props) {
     )
 }
 
-export default Payments;
+export default Withdraw;

@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 function LogIn (props) {
     // props
-    const { setNotLoggedIn } = props
+    const { setNotLoggedIn, setData } = props
 
     // hooks
     const emailValue = useRef(null);
@@ -10,17 +10,27 @@ function LogIn (props) {
 
     // variables
     // get bank-app-data
-    const userData = JSON.parse(localStorage.getItem('bank-app-data'))
+    const usersData = JSON.parse(localStorage.getItem('bank-users-data'))
+
+    // if (vendors.some(e => e.Name === 'Magenic')) {
+    //     /* vendors contains the element we're looking for */
+    //   }
 
     // event handlers
     function logIn (e) {
         e.preventDefault();
-        
-        if(emailValue.current.value === userData.email && passwordValue.current.value === userData.password){
+        const userEmail = emailValue.current.value
+        const userPassword = passwordValue.current.value
+        if (usersData.some((userData) => (userData.email === userEmail & userData.password === userPassword))) {
             console.log('successfully logged in')
             setNotLoggedIn(false)
+            const loggedInUser = usersData.filter(data => {
+                return data.email === userEmail
+            })
+            console.log(loggedInUser[0])
+            setData(loggedInUser[0])
         } else {
-            console.log('test')
+            console.log('user not found')
         }
     }
 

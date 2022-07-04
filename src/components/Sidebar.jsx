@@ -6,7 +6,7 @@ function Sidebar () {
         {icon: <HomeIcon className='h-5 w-5' />, text: 'Home', route: '/'},
         {icon: <ShoppingBagIcon className='h-5 w-5' />, text: 'My Account', route: '/my-account'},
         {icon: <SwitchHorizontalIcon className='h-5 w-5' />, text: 'Send Money', route: '/send-money'},
-        {icon: <DocumentRemoveIcon className='h-5 w-5' />, text: 'Payments', route: '/payments'},
+        {icon: <DocumentRemoveIcon className='h-5 w-5' />, text: 'Withdraw', route: '/withdraw'},
         {icon: <DocumentAddIcon className='h-5 w-5' />, text: 'Deposit', route: '/deposit'},
         {icon: <UserCircleIcon className='h-5 w-5' />, text: 'Account Maintenance', route: '/account-maintenance'},
     ]
