@@ -24,7 +24,7 @@ function Content (props) {
                     account_type={data.account_type} 
                     account_number={data.account_number} 
                     />
-    const sendMoneyPage = <SendMoney balance={data.balance} account_type={data.account_type} account_number={data.account_number} />
+    const sendMoneyPage = <SendMoney data={data} balance={data.balance} account_type={data.account_type} account_number={data.account_number} />
     const withdrawPage = <Withdraw data={data} setData={setData} />
     const depositPage = <Deposit data={data} setData={setData} />
 

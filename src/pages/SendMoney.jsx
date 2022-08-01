@@ -1,11 +1,32 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 
 function SendMoney (props) {
-    const {balance, account_type, account_number} = props
+    const {balance, account_type, account_number, data} = props
 
     const accountBalance = balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
     const [transferDestination, setTransferDestination] = useState('');
+
+    const thirdPartyAccountNumber = useRef('')
+    const thirdPartyAmmountToAdd = useRef('')
+
+    const sendMoney = (e) => {
+        e.preventDefault()
+        console.log(thirdPartyAccountNumber.current.value)
+        const thirdPartyUser = thirdPartyAccountNumber.current.value
+        const amountTransfer = thirdPartyAmmountToAdd.current.value
+
+        const usersData = JSON.parse(localStorage.getItem('bank-users-data'))
+        const indexOfThirdPartyUserToSave = usersData.findIndex((obj => obj.account_number == thirdPartyUser))
+
+        const dataOfThirdParty = usersData[indexOfThirdPartyUserToSave]
+        
+        console.log('dataOfThirdParty', dataOfThirdParty)
+        const newData = usersData.map((item ,index) => { return index == indexOfThirdPartyUserToSave ? dataOfThirdParty : item; });
+        console.log(newData)
+
+        // localStorage.setItem('bank-users-data', JSON.stringify(newData))
+    }
 
     const chooseTransfer = (e) => {
         {switch (e.target.value) {
@@ -19,7 +40,8 @@ function SendMoney (props) {
                 break;
             case 'third_party':
                 setTransferDestination(<Fragment>
-                    <p htmlFor="account-number-destination">Unable to process your request at the moment.</p>
+                    <label htmlFor="accountNumber">Account Number</label>
+                    <input name="accountNumber" type="text" className="appearance-none p-2 my-1 h-10 rounded placeholder-red-900 text-right" placeholder="XXXX" ref={thirdPartyAccountNumber}/>
                 </Fragment>)
                 break;
             case 'another_bank':
@@ -29,6 +51,7 @@ function SendMoney (props) {
                 break;
             default:
                 setTransferDestination('')
+                
         };}
     }
 
@@ -45,7 +68,7 @@ function SendMoney (props) {
                 <p>Php {accountBalance}</p>
             </span>
             <label htmlFor="amountTransfer">Transfer amount</label>
-            <input name="amountTransfer" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-red-900 text-right" placeholder="0.00"/>
+            <input name="amountTransfer" type="number" className="appearance-none p-2 my-1 h-10 rounded placeholder-red-900 text-right" placeholder="0.00" ref={thirdPartyAmmountToAdd}/>
             <p htmlFor="amountTo">Transfer to:</p>
             <span>
                 <span>
@@ -66,7 +89,7 @@ function SendMoney (props) {
 
             <hr className="border-black my-2" />
             <span className="flex justify-around">
-                <button className="bg-red-700 text-white hover:ring-2 hover:ring-red-700 my-1 rounded p-2">Send</button>
+                <button className="bg-red-700 text-white hover:ring-2 hover:ring-red-700 my-1 rounded p-2" onClick={sendMoney}>Send</button>
                 <button className="bg-red-700 text-white hover:ring-2 hover:ring-red-700 my-1 rounded p-2">Cancel</button>
             </span>
             
